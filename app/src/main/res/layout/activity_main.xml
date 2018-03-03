@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.soushinyamaoka.mytodolist.MainActivity">
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:text="追加"
+        app:layout_anchor="@+id/editText"
+        app:layout_anchorGravity="right|center"
+        tools:layout_editor_absoluteX="248dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="323dp"
+        android:layout_height="59dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="追加" />
+
+    <include
+        layout="@layout/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="454dp"
+        android:layout_gravity="center_vertical"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:layout="@layout/item" />
+
+
+
+</android.support.design.widget.CoordinatorLayout>
