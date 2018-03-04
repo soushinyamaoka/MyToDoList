@@ -5,7 +5,6 @@ package com.example.soushinyamaoka.mytodolist;
  */
 
 import android.database.Cursor;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,10 +27,8 @@ public class ListViewAdapter extends AppCompatActivity {
     private ListView ListView;        // ListView
     private Button mButton02AllDelete;          // 全削除ボタン
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview);
+
+    protected void ListViewAdapter() {
 
         dbAdapter = new DBAdapter(this);
         dbAdapter.openDB();     // DBの読み込み(読み書きの方)
@@ -66,27 +63,6 @@ public class ListViewAdapter extends AppCompatActivity {
 
         // ArrayAdapterに対してListViewのリスト(items)の更新
         adapter.notifyDataSetChanged();
-
-        // 全削除ボタン押下時処理
-        mButton02AllDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(!items.isEmpty()) {
-                    dbAdapter.openDB();     // DBの読み込み(読み書きの方)
-                    dbAdapter.allDelete();  // DBのレコードを全削除
-                    dbAdapter.closeDB();    // DBを閉じる
-
-                    //ArrayAdapterに対してListViewのリスト(items)の更新
-                    adapter.clear();
-                    adapter.addAll(items);
-                    adapter.notifyDataSetChanged(); // // Viewの更新
-
-                }else {
-                    Toast.makeText(ListViewAdapter.this, "登録されているデータがありません。", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     /**
@@ -98,4 +74,26 @@ public class ListViewAdapter extends AppCompatActivity {
         //mButton02AllDelete = (Button) findViewById(R.id.listView);         // 全削除ボタン
     }
 
+    // 全削除ボタン押下時処理
+    private void Delete() {
+        mButton02AllDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!items.isEmpty()) {
+                    dbAdapter.openDB();     // DBの読み込み(読み書きの方)
+                    dbAdapter.allDelete();  // DBのレコードを全削除
+                    dbAdapter.closeDB();    // DBを閉じる
+
+                    //ArrayAdapterに対してListViewのリスト(items)の更新
+                    adapter.clear();
+                    adapter.addAll(items);
+                    adapter.notifyDataSetChanged(); // // Viewの更新
+
+                } else {
+                    Toast.makeText(ListViewAdapter.this, "登録されているデータがありません。", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 }

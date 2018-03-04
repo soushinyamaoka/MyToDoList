@@ -201,14 +201,7 @@ public class DBAdapter {
         public void onCreate(SQLiteDatabase db) {
 
             //テーブルを作成するSQL文の定義 ※スペースに気を付ける
-            String createTbl = "CREATE TABLE " + DB_TABLE + " ("
-                    + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + COL_TASK + " TEXT NOT NULL,"
-                    //+ COL_LIMITDATA + " TEXT NOT NULL,"
-                    //+ COL_LIMITTIME + " INTEGER NOT NULL,"
-                    //+ COL_PRICE + " INTEGER NOT NULL"
-                    + ");";
-
+            String createTbl = "CREATE TABLE " + DB_TABLE + "("+ COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+ COL_TASK + " TEXT NOT NULL"+ ");";
             db.execSQL(createTbl);      //SQL文の実行
         }
 
