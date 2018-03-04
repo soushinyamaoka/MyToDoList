@@ -107,9 +107,10 @@ public class DBAdapter {
      * getDB()
      *
      * @param //columns String[] 取得するカラム名 nullの場合は全カラムを取得
+     * @param columns
      * @return DBのデータ
      */
-    public Cursor getDB() {
+    public Cursor getDB(String[] columns) {
 
         // queryメソッド DBのデータを取得
         // 第1引数：DBのテーブル名
@@ -119,7 +120,7 @@ public class DBAdapter {
         // 第5引数：集計条件(GROUP BY句)
         // 第6引数：選択条件(HAVING句)
         // 第7引数：ソート条件(ODERBY句)
-        return db.query(DB_TABLE, null, null, null, null, null, null);
+        return db.query(DB_TABLE, columns, null, null, null, null, null);
     }
 
     /**
